@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript">
+function validate()
+{
+	if(document.details.name.value==='')
+		{
+		alert("Please provide your name");
+		document.details.name.focus();
+		return false;
+	}
+ 	if(document.details.email.value==='')
+ 	{
+ 	alert("Please provide your email address.");
+ 	document.details.email.focus();
+ 	return false;
+}
+ 	if(document.details.pass.value==='')
+	{
+	alert("Please provide a password.");
+	document.details.pass.focus();
+	return false;
+}
+ 	if(document.details.dob.value==='')
+	{
+	alert("Please provide your date of birth.");
+	document.details.dob.focus();
+	return false;
+	}
+ 	if(document.details.gender.value==="-1")
+	{
+	alert("Please specify your gender.");
+	document.details.gender.focus();
+	return false;
+}
+ 	if(document.details.mob.value==='')
+	{
+	alert("Please provide your Mobile Phone no.");
+	document.details.mob.focus();
+	return false;
+	}
+ 	if(document.details.loc.value==='')
+	{
+	alert("Please provide your location.");
+	document.details.loc.focus();
+	return false;
+}
+ 	if(document.details.gidn.value==='')
+	{
+	alert("Please provide government identification no.");
+	document.details.gidn.focus();
+	return false;
+}
+ 	if(document.details.pic.value==='')
+	{
+	alert("Please upload your photo.");
+	return false;
+}
+ 	if(document.details.gid.value==='')
+	{
+	alert("Please upload your Government Identification proof.");
+	return false;
+}
+ 	if(document.details.cv.value==='')
+	{
+	alert("Please upload your Curriculum Vitae.");
+	return false;
+	}
+}
+
+function check(){
+	var p=document.getElementById("pass").value;
+	var url="Strength.jsp?pass="+p;
+	var x=new XMLHttpRequest();
+	
+	x.onreadystatechange=function(){
+		if(x.readyState==4 && x.status==200){
+			document.getElementById("here").innerHTML=x.responseText;
+		}
+		}
+	x.open("GET",url,true);
+	x.send();
+}
+
+
+</script>
+<style type="text/css">
+table{
+text-align:right;
+font-family:cursive;
+font-size: 20px;
+padding: 20px;
+}
+#form{
+width: 100%;
+height: 50%;
+background-color: white;
+border-radius: 10px;
+}
+input{
+border-radius: 5px;
+height: 30px;
+}
+#butt{
+background-color: #666699;
+font-size: 25px;
+width: 250px;
+margin-left: 40%;
+border: none;
+color: #fff;
+border-radius: 5px;
+text-align: center;
+cursor: pointer;
+}
+.header{
+background-image: url("bg.jpg");
+font-family: Verdana;
+color: white;
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+z-index: 99999;
+border-radius: 10px;
+background-repeat: no repeat;
+}
+img{
+width: 120px;
+border-radius: 20px;
+float: left;
+padding-bottom: 15px;
+padding-left: 5px;
+padding-top: 10px;
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+li a:hover {
+    background-color: #111111;
+}
+body{
+background-image: url("bg6.jpg");
+
+}
+#here{
+font-size: 10px;}
+</style>
+<meta charset="ISO-8859-1">
+<title>Registration</title>
+</head>
+<body>
+<div class="header">
+ <img src="eoi.png">
+<center><h1><u>Jobs For You</u></h1>
+<p style="font-size: 10px;">The National Rural Employment Guarantee Act 2005</p>
+<p style="font-size: 10px;">An initiative of Ministry of Rural Development.</p>
+<p style="font-size: 10px;"> Government of India. </p></center>
+<ul>
+<li><a href="index.jsp">Home</a></li>
+<li><a href="jobs.html">Jobs</a></li>
+<li><a href="employers.jsp">Employers</a></li>
+<li><a href="rajaswa.pdf">The Act</a></li>
+<li><a href="faqs.html">FAQs</a></li>
+<li><a href="http://rural.nic.in/">Ministry</a></li>
+<li><a href="emphist.jsp">Employment History</a></li>
+<li><a href="feedback.jsp">Feedback</a></li>
+</ul>
+</div><br><br><br><br><br><br><br><br><br><br>
+<center><h2><u><b>Fill in the details to sign up:-</b></u></h2></center>
+<div id="form">
+<form name="details" action="Register" method="post" enctype="multipart/form-data" onsubmit="return(validate());">
+<table>
+<tr><td>Name:</td><td><input type="text" name="name"  size="40" placeholder="Name" ></td>
+<td>Email:</td><td><input type="text" name="email" size="40" placeholder="Email Address" ></td></tr>
+<tr><td>Create Password:</td><td><input type="password" id="pass" name="pass" size="40" placeholder="Password" onkeypress="check()" ><div id="here"></div></td>
+<td>Date Of Birth:</td><td><input type="text" name="dob" placeholder="dd/mm/yyyy" size="40" placeholder="Date of Birth" ></td></tr>
+<tr><td>Gender</td><td><select name="gender">
+                                   <option value="-1">I Am...</option>
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                               </select>   </td>
+<td>Mobile Phone:</td><td><input type="text" name="mob" placeholder="Phone No." size="40"></td></tr>
+<tr><td>Location:</td><td><input type="text" name="loc" size="40" placeholder="Location" ></td>
+<td>Skills(if any):</td><td><input type="text" name="skill" size="40" placeholder="Skills" ></td></tr>
+<tr><td>Government Identification No.<font: style="font-size: 13px;" size="40"></font>:</td><td><input type="text" name="gidn" size="40" placeholder="Id"></td>
+<td>Upload your recent photo:</td><td><input type="file" name="pic" size="40"></td></tr>
+<tr><td>Upload Government Identification:</td><td><input type="file" name="gid" size="40"></td>
+<td>Upload CV:</td><td><input type="file" name="cv" size="40"></td></tr>
+</table>
+<input type="Submit" value="Submit" id="butt" onclick="validate()">
+</form>
+</div>
+</body>
+</html>
